@@ -3,7 +3,7 @@ class php::params {
   $fpm_config_file             = '/etc/php-fpm.conf'
   $fpm_config_include_dir      = '/etc/php-fpm.d'
   $fpm_purge_conf_dir          = true
-  $fpm_log_dir                 = '/var/log/php-fpm.d'
+  $fpm_log_dir                 = '/var/log/php-fpm'
   $fpm_package_manage          = true
   $fpm_package_ensure          = 'present'
   $fpm_package_name            = 'php-fpm'
@@ -41,16 +41,16 @@ class php::params {
     'pm.status_path'            => '/status',
     'ping.path'                 => '/ping',
     'ping.response'             => 'pong',
-    'access.log'                => '/var/log/php-fpm/$pool.access.log',
+    'access.log'                => "${fpm_log_dir}/global_access.log",
     'access.format'             => '"%R - %u %t \"%m %r\" %s"',
-    'slowlog'                   => 'log/$pool.log.slow',
+    'slowlog'                   => "${fpm_log_dir}/global_slow.log",
     'request_slowlog_timeout'   => '0',
     'request_terminate_timeout' => '0',
     'chdir'                     => '/',
     'catch_workers_output'      => 'no',
     'security.limit_extensions' => '.php',
     'php_admin_value'           => {
-      'error_log'               => '/var/log/php-fpm/$pool_error.log',
+      'error_log'               => "${fpm_log_dir}/global_error.log",
       'log_errors'              => 'on',
       'memory_limit'            => '128M',
     },
