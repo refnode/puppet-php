@@ -18,5 +18,16 @@ describe 'php::fpm', :type => :class do
       'ensure' => 'present'
       )
     }
+    it { is_expected.to contain_file("/etc/php-fpm.d").with(
+      'ensure'  => 'directory',
+      'recurse' => 'true',
+      'purge'   => 'true'
+      )
+    }
+    it { is_expected.to contain_file("/var/log/php-fpm.d").with(
+      'ensure'  => 'directory'
+      )
+    }
+    it { is_expected.to contain_file("/etc/php-fpm.d") }
   end
 end
