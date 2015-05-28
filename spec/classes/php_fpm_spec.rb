@@ -28,7 +28,10 @@ describe 'php::fpm', :type => :class do
       'ensure'  => 'directory'
       )
     }
-    it { is_expected.to contain_file("/etc/php-fpm.conf") }
+    it { is_expected.to contain_file("php-fpm-config-file").with(
+      'path'    => '/etc/php-fpm.conf'
+      )
+    }
     it { is_expected.to contain_service("php-fpm").with(
       'ensure'  => 'running'
       )
