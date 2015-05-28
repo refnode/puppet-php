@@ -28,6 +28,6 @@ describe 'php::fpm', :type => :class do
       'ensure'  => 'directory'
       )
     }
-    it { is_expected.to contain_file("/etc/php-fpm.d") }
+    it { is_expected.to contain_file("/etc/php-fpm.conf") }
   end
 end
