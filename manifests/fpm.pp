@@ -6,6 +6,7 @@ class php::fpm (
   $package_manage          = $php::params::fpm_package_manage,
   $package_ensure          = $php::params::fpm_package_ensure,
   $package_name            = $php::params::fpm_package_name,
+  $config_manage           = $php::params::fpm_config_manage,
 ) inherits php::params {
   
   include '::php::fpm::install'

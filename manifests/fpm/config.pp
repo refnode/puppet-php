@@ -20,4 +20,12 @@ class php::fpm::config {
     owner  => 'root',
     group  => 'root',
   }
+  
+  if $php::fpm::config_manage {
+    file { 'php-fpm-config-file':
+      path    => $config_file,
+      content => template('php/php-fpm.conf.erb'),
+      mode    => '0644',
+    }
+  }
 }
