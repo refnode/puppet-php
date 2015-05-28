@@ -23,7 +23,7 @@ define php::fpm_instance (
   
   file { $config_filename:
     ensure  => $ensure,
-    path    => "${config_filename}",
+    path    => $config_filename,
     content => template('php/fpm-instance.conf.erb'),
   }
 }

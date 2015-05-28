@@ -12,10 +12,10 @@ class php::fpm::service {
   }
   
   service { 'php-fpm':
-    ensure   => $service_ensure,
-    name     => $php::fpm::service_name,
-    enable   => $php::fpm::service_enable,
-    require  => Package['php-fpm'],
+    ensure  => $service_ensure,
+    name    => $php::fpm::service_name,
+    enable  => $php::fpm::service_enable,
+    require => Package['php-fpm'],
   }
   
   # only establish ordering between config file and service if
