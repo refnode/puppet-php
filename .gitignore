@@ -35,6 +35,8 @@ build/
 .rvmrc
 
 spec/fixtures/
+log/
+junit/
 
 # Eclipse resources
 .project
