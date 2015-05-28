@@ -14,5 +14,9 @@ describe 'php::fpm', :type => :class do
       }
     end
     it { is_expected.to contain_class("php::params") }
+    it { is_expected.to contain_package("php-fpm").with(
+      'ensure' => 'present'
+      )
+    }
   end
 end
