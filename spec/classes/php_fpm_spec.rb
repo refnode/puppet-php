@@ -24,10 +24,14 @@ describe 'php::fpm', :type => :class do
       'purge'   => 'true'
       )
     }
-    it { is_expected.to contain_file("/var/log/php-fpm.d").with(
+    it { is_expected.to contain_file("/var/log/php-fpm").with(
       'ensure'  => 'directory'
       )
     }
     it { is_expected.to contain_file("/etc/php-fpm.conf") }
+    it { is_expected.to contain_service("php-fpm").with(
+      'ensure'  => 'running'
+      )
+    }
   end
 end
