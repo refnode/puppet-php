@@ -8,6 +8,9 @@ class php::fpm (
   $package_ensure          = $php::params::fpm_package_ensure,
   $package_name            = $php::params::fpm_package_name,
   $config_manage           = $php::params::fpm_config_manage,
+  $service_manage          = $php::params::fpm_service_manage,
+  $service_name            = $php::params::fpm_service_name,
+  $service_enable          = $php::params::fpm_service_enable,
 ) inherits php::params {
   
   # Merge default_options and override_options into final options
@@ -16,6 +19,7 @@ class php::fpm (
   include '::php::fpm::install'
   include '::php::fpm::config'
   include '::php::fpm::instance_default'
+  include '::php::fpm::service'
   
   anchor { 'php::fpm::start': }
   anchor { 'php::fpm::end': }
@@ -24,5 +28,6 @@ class php::fpm (
   Class['php::fpm::install'] ->
   Class['php::fpm::config'] ->
   Class['php::fpm::instance_default'] ->
+  Class['php::fpm::service'] ->
   Anchor['php::fpm::end']
 }

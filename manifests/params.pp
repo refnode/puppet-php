@@ -8,6 +8,9 @@ class php::params {
   $fpm_package_ensure          = 'present'
   $fpm_package_name            = 'php-fpm'
   $fpm_config_manage           = true
+  $fpm_service_manage          = true
+  $fpm_service_enable          = true
+  $fpm_service_name            = 'php-fpm'
   
   $fpm_options_default_global  = {
     'error_log'                => '/var/log/php-fpm/global_error.log',
