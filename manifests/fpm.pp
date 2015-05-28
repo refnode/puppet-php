@@ -15,6 +15,7 @@ class php::fpm (
   
   include '::php::fpm::install'
   include '::php::fpm::config'
+  include '::php::fpm::instance_default'
   
   anchor { 'php::fpm::start': }
   anchor { 'php::fpm::end': }
@@ -22,5 +23,6 @@ class php::fpm (
   Anchor['php::fpm::start'] ->
   Class['php::fpm::install'] ->
   Class['php::fpm::config'] ->
+  Class['php::fpm::instance_default'] ->
   Anchor['php::fpm::end']
 }

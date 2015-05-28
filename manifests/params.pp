@@ -21,4 +21,42 @@ class php::params {
     'daemonize'                => 'no',
     'systemd_interval'         => '10',
   }
+  
+  $fpm_options_default_instance = {
+    'user'                      => 'apache',
+    'group'                     => 'apache',
+    'listen'                    => '127.0.0.1:9000',
+    'listen.backlog'            => '-1',
+    'listen.owner'              => 'nobody',
+    'listen.group'              => 'nobody',
+    'listen.mode'               => '0666',
+    'listen.allowed_clients'    => '127.0.0.1',
+    'pm'                        => 'dynamic',
+    'pm.max_children'           => '50',
+    'pm.start_servers'          => '5',
+    'pm.min_spare_servers'      => '5',
+    'pm.max_spare_servers'      => '35',
+    'pm.process_idle_timeout'   => '10s',
+    'pm.max_requests'           => 500,
+    'pm.status_path'            => '/status',
+    'ping.path'                 => '/ping',
+    'ping.response'             => 'pong',
+    'access.log'                => '/var/log/php-fpm/$pool.access.log',
+    'access.format'             => '"%R - %u %t \"%m %r\" %s"',
+    'slowlog'                   => 'log/$pool.log.slow',
+    'request_slowlog_timeout'   => '0',
+    'request_terminate_timeout' => '0',
+    'chdir'                     => '/',
+    'catch_workers_output'      => 'no',
+    'security.limit_extensions' => '.php',
+    'php_admin_value'           => {
+      'error_log'               => '/var/log/php-fpm/$pool_error.log',
+      'log_errors'              => 'on',
+      'memory_limit'            => '128M',
+    },
+    'php_value'                 => {
+      'session.save_handler'    => 'files',
+      'session.save_path'       => '/var/lib/php/session',
+    }
+  }
 }
