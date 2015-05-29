@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "wiredobjects",
   "summary": "Puppet module for managing PHP-FPM and PHP-Cli",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/wiredobjects/puppet-php.git",
   "project_page": "https://github.com/wiredobjects/puppet-php",
   "issues_url": "https://github.com/wiredobjects/puppet-php/issues",
