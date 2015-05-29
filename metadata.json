@@ -7,6 +7,20 @@
   "source": "https://github.com/wiredobjects/puppet-php.git",
   "project_page": "https://github.com/wiredobjects/puppet-php",
   "issues_url": "https://github.com/wiredobjects/puppet-php/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 3.2.0 < 5.0.0"} 
   ]
