@@ -43,3 +43,5 @@ junit/
 
 # Vagrant resources
 .vagrant
+/Vagrantfile
+/vagrant/
