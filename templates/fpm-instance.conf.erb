@@ -1,0 +1,19 @@
+; ************************************
+; PHP FPM Instance Configuration
+; Managed by Puppet
+; ************************************
+
+[<%= @name %>]
+<% @options.sort.map do |k,v| -%>
+<%   if v.is_a?(String) -%>
+<%= k %> = <%= v %>
+<%   end -%>
+<% end -%>
+
+<% @options.sort.map do |k,v| -%>
+<%   if v.is_a?(Hash) -%>
+<%     v.sort.map do |ki, vi| -%>
+<%= k %>[<%= ki %>] = <%= vi %>
+<%     end %>
+<%   end -%>
+<% end -%>
