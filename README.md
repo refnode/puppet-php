@@ -15,19 +15,19 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This PHP module installs, configures and manages the PHP-FPM service and the
+PHP command-line.
+
+WARNING: The module is in alpha state
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+This PHP module installs, configures and manages the PHP-FPM service.
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+In future releases it will also provide
+
+* installation and configuration for the PHP command-line tools
+* an integrate of the Facebook HipHop virtual machine as alternative to PHP-FPM
 
 ## Setup
 
@@ -58,22 +58,110 @@ the fancy stuff with your module here.
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+###Classes
+
+####Public classes
+* `php::fpm`: Installs and configures PHP-FPM Service.
+
+####Private classes
+* `php::fpm::install`: Installs the PHP-FPM packages.
+* `php::fpm::config`: Configures global configuration and central directories.
+* `php::fpm::instance_default`: Generates a default PHP-FPM instance using php::fpm_instance.
+* `php::fpm::service`: Deletes default Manages the PHP-FPM service.
+
+###Defined Types
+
+####php::fpm_instance
+
+###Parameters
+
+####php::fpm
+
+#####`config_file`
+
+The path of the central PHP-FPM configuration file.
+
+#####`include_dir`
+
+The path of the PHP-FPM include_dir. The include_dir is the place for storing the FPM instance
+pool configuration files.
+
+#####`purge_conf_dir`
+
+Wether the include_dir should be purged. Valid values are 'true', 'false'. Defaults to 'true'.
+
+When set to 'true', only FPM instance pool configurations files managed by Puppet are stored.
+
+#####`log_dir`
+
+The path of the central and pool instance logs.
+
+#####`override_options`
+
+The hash of override options to pass into the global PHP-FPM configuration file.
+The hash is merged together with defaults from params.pp into a final options hash.
+
+~~~
+$override_options = {
+  'item'             => 'thing',
+}
+~~~
+
+
+#####`package_manage`
+
+Whether to manage the PHP-FPM package. Defaults to true.
+
+#####`package_ensure`
+
+Whether the package exists or should be a specific version.
+Valid values are 'present', 'absent', or 'x.y.z'. Defaults to 'present'.
+
+#####`package_name`
+
+The name of the PHP-FPM package to install. Defaults are OS dependent, defined in params.pp.
+
+#####`config_manage`
+
+Whether to manage the PHP-FPM global configuration. Defaults to true.
+
+#####`service_manage`
+
+Whether to manage the PHP-FPM service. Defaults to true.
+
+#####`service_name`
+
+The name of the PHP-FPM service. Defaults are OS dependent, defined in params.pp.
+
+#####`service_enable`
+
+Whether the PHP-FPM service should be enabled. Valid values are 'true', 'false'. Defaults to 'true'.
+
+####php::fpm_instance
+
+#####`ensure`
+#####`override_options`
+
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+This module has been tested on:
+
+* CentOS 7
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+The rules for contributing ot this module are as close to the Puppet Labs module
+contribution guide as possible.
+
+Check out the complete [module contribution guide](https://docs.puppetlabs.com/forge/contributing.html).
 
 ## Release Notes/Contributors/Etc **Optional**
 
 If you aren't using changelog, put your release notes here (though you should
 consider using changelog). You may also add any additional sections you feel are
 necessary or important to include here. Please use the `## ` header.
+
+### Authors
+
+This module is heavy inspired by the style of puppetlabs-mysql. The following contributors have contributed to this module:

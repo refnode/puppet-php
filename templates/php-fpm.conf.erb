@@ -1,0 +1,14 @@
+; ************************************
+; PHP FPM Central Configuration
+; Managed by Puppet
+; ************************************
+
+; Pool Definitions in <%= @include_dir %>
+include=<%= @include_dir %>/*.conf
+
+[global]
+<% @options.sort.map do |k,v| -%>
+<%   if v.is_a?(String) -%>
+<%= k %> = <%= v %>
+<%   end -%>
+<% end -%>
