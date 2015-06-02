@@ -96,6 +96,15 @@ When set to 'true', only FPM instance pool configurations files managed by Puppe
 
 The path of the central and pool instance logs.
 
+#####`var_dir`
+
+The path of var dir, the base_dir for session dirs and more.
+
+#####`session_dir`
+
+The path of the session base_dir. By default, every fpm pool instance gets an own
+directory inside session_dir with permissions restricted to the user/group of the instance.
+
 #####`override_options`
 
 The hash of override options to pass into the global PHP-FPM configuration file.
@@ -140,6 +149,8 @@ Whether the PHP-FPM service should be enabled. Valid values are 'true', 'false'.
 ####php::fpm_instance
 
 #####`ensure`
+#####`user`
+#####`group`
 #####`override_options`
 
 

@@ -3,6 +3,8 @@ class php::fpm (
   $include_dir             = $php::params::fpm_config_include_dir,
   $purge_conf_dir          = $php::params::fpm_purge_conf_dir,
   $log_dir                 = $php::params::fpm_log_dir,
+  $var_dir             = $php::params::fpm_var_dir,
+  $session_dir         = $php::params::fpm_session_dir,
   $override_options        = {},
   $package_manage          = $php::params::fpm_package_manage,
   $package_ensure          = $php::params::fpm_package_ensure,

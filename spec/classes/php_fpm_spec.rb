@@ -28,6 +28,20 @@ describe 'php::fpm', :type => :class do
       'ensure'  => 'directory'
       )
     }
+    it { is_expected.to contain_file("/var/lib/php").with(
+      'ensure'  => 'directory',
+      'owner'   => 'root',
+      'group'   => 'root',
+      'mode'    => '1777'
+      )
+    }
+    it { is_expected.to contain_file("/var/lib/php/session").with(
+      'ensure'  => 'directory',
+      'owner'   => 'root',
+      'group'   => 'root',
+      'mode'    => '1777'
+      )
+    }
     it { is_expected.to contain_file("php-fpm-config-file").with(
       'path'    => '/etc/php-fpm.conf'
       )
