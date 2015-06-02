@@ -4,6 +4,8 @@ class php::params {
   $fpm_config_include_dir      = '/etc/php-fpm.d'
   $fpm_purge_conf_dir          = true
   $fpm_log_dir                 = '/var/log/php-fpm'
+  $fpm_var_dir                 = '/var/lib/php'
+  $fpm_session_dir             = "${fpm_var_dir}/session"
   $fpm_package_manage          = true
   $fpm_package_ensure          = 'present'
   $fpm_package_name            = 'php-fpm'
